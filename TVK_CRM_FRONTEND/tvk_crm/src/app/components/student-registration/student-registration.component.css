@@ -7,7 +7,8 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
 }
@@ -25,7 +26,7 @@ body {
 /* ---------- Page Layout / Centering ---------- */
 
 .page-content,
-body > .container {
+body>.container {
   flex: 1;
   display: flex;
   justify-content: center;
@@ -50,8 +51,15 @@ body > .container {
 }
 
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .container h2 {
@@ -169,8 +177,15 @@ select.ng-valid.ng-touched {
 }
 
 @keyframes shakeIn {
-  from { opacity: 0; transform: translateX(-4px); }
-  to { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(-4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 /* ---------- Submit Button ---------- */
@@ -216,6 +231,81 @@ hr {
   margin-top: 24px;
   border: none;
   border-top: 1px solid #1f3a57;
+}
+
+/* File Upload */
+
+.file-label {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 6px;
+  color: #87CEEB;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+input[type="file"] {
+
+  width: 100%;
+  padding: 12px;
+  margin-top: 5px;
+
+  color: #dfefff;
+
+  background: #0c1626;
+
+  border: 1.5px solid #23415f;
+
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  transition: .3s;
+
+}
+
+input[type="file"]:hover {
+
+  border-color: #4fa3f7;
+
+  background: #10203a;
+
+}
+
+input[type="file"]:focus {
+
+  outline: none;
+
+  border-color: #4fa3f7;
+
+  box-shadow: 0 0 0 4px rgba(79, 163, 247, .18);
+
+}
+
+input[type="file"]::file-selector-button {
+
+  background: #0d6efd;
+
+  color: #fff;
+
+  border: none;
+
+  padding: 8px 16px;
+
+  border-radius: 6px;
+
+  margin-right: 12px;
+
+  cursor: pointer;
+
+  transition: .3s;
+
+}
+
+input[type="file"]::file-selector-button:hover {
+
+  background: #3d8bfd;
+
 }
 
 /* ---------- Responsive ---------- */

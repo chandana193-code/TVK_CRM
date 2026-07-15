@@ -1,4 +1,4 @@
-import { Component , OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { FormBuilder, Validators } from '@angular/forms';
 
@@ -9,9 +9,9 @@ import { StudentService } from '../../services/student.service';
   templateUrl: './student-registration.component.html',
   styleUrls: ['./student-registration.component.css']
 })
-export class StudentRegistrationComponent implements OnInit  {
+export class StudentRegistrationComponent implements OnInit {
 
-  
+
   passoutYears: number[] = [];
   constructor(
     private fb: FormBuilder,
@@ -148,7 +148,15 @@ export class StudentRegistrationComponent implements OnInit  {
     aadhaar: ['', [
       Validators.required,
       Validators.pattern('^[0-9]{12}$')
-    ]]
+    ]],
+
+    collegeRegId: ['', Validators.required],
+
+    course: ['', Validators.required],
+
+    photo: [null, Validators.required],
+
+    document: [null, Validators.required]
 
   });
 
@@ -194,6 +202,37 @@ export class StudentRegistrationComponent implements OnInit  {
       this.students = res;
 
     })
+
+  }
+
+  onPhotoSelected(event: any) {
+
+    const file = event.target.files[0];
+
+    if (file) {
+      this.studentForm.patchValue({
+        photo: file
+      });
+
+      this.studentForm.get('photo')?.updateValueAndValidity();
+    }
+
+  }
+
+
+  onDocumentSelected(event: any) {
+
+    const file = event.target.files[0];
+
+    if (file) {
+
+      this.studentForm.patchValue({
+        document: file
+      });
+
+      this.studentForm.get('document')?.updateValueAndValidity();
+
+    }
 
   }
 

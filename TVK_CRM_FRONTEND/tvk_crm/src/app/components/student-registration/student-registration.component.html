@@ -95,7 +95,7 @@
                 Please select your Passout Year.
             </span>
         </div>
-        
+
         <input type="text" placeholder="Aadhaar Number" formControlName="aadhaar">
 
         <div class="error" *ngIf="f.aadhaar.touched && f.aadhaar.invalid">
@@ -109,6 +109,59 @@
             </span>
 
         </div>
+
+        <!-- Student College Registration ID -->
+        <input type="text" placeholder="College Registration ID" formControlName="collegeRegId">
+
+        <div class="error" *ngIf="f.collegeRegId.touched && f.collegeRegId.invalid">
+
+            <span *ngIf="f.collegeRegId.errors?.['required']">
+                College Registration ID is required.
+            </span>
+
+        </div>
+
+
+        <!-- Internship Course -->
+        <select formControlName="course">
+
+            <option value="">Select Internship Course</option>
+
+            <option value="Angular">Angular</option>
+            <option value="React">React</option>
+            <option value="Java Full Stack">Java Full Stack</option>
+            <option value=".NET Full Stack">.NET Full Stack</option>
+            <option value="Python Full Stack">Python Full Stack</option>
+            <option value="MERN Stack">MERN Stack</option>
+            <option value="Data Science">Data Science</option>
+            <option value="Artificial Intelligence">Artificial Intelligence</option>
+
+        </select>
+
+        <div class="error" *ngIf="f.course.touched && f.course.invalid">
+
+            <span *ngIf="f.course.errors?.['required']">
+                Please select an internship course.
+            </span>
+
+        </div>
+
+
+        <!-- Passport Size Photo -->
+        <label class="file-label">
+            Passport Size Photo
+        </label>
+
+        <input type="file" accept="image/*" (change)="onPhotoSelected($event)">
+
+
+
+        <!-- Aadhaar or PAN Card -->
+        <label class="file-label">
+            Upload Aadhaar / PAN Card
+        </label>
+
+        <input type="file" accept=".jpg,.jpeg,.png,.pdf" (change)="onDocumentSelected($event)">
 
         <br><br>
 
