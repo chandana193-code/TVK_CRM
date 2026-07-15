@@ -147,22 +147,28 @@
         </div>
 
 
-        <!-- Passport Size Photo -->
+        <!-- Passport Photo -->
         <label class="file-label">
-            Passport Size Photo
+            Passport Size Photo (JPG, JPEG, PNG | Max 1 MB)
         </label>
 
-        <input type="file" accept="image/*" (change)="onPhotoSelected($event)">
+        <input type="file" accept=".jpg,.jpeg,.png" (change)="onPhotoSelected($event)">
+
+        <div class="error" *ngIf="photoError">
+            {{ photoError }}
+        </div>
 
 
-
-        <!-- Aadhaar or PAN Card -->
+        <!-- Aadhaar / PAN -->
         <label class="file-label">
-            Upload Aadhaar / PAN Card
+            Upload Aadhaar / PAN Card (JPG, PNG, PDF | Max 1 MB)
         </label>
 
         <input type="file" accept=".jpg,.jpeg,.png,.pdf" (change)="onDocumentSelected($event)">
 
+        <div class="error" *ngIf="documentError">
+            {{ documentError }}
+        </div>
         <br><br>
 
         <button type="submit">

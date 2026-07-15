@@ -205,35 +205,89 @@ export class StudentRegistrationComponent implements OnInit {
 
   }
 
+  photoError: string = '';
+
   onPhotoSelected(event: any) {
 
     const file = event.target.files[0];
 
-    if (file) {
-      this.studentForm.patchValue({
-        photo: file
-      });
-
-      this.studentForm.get('photo')?.updateValueAndValidity();
+    if (!file) {
+      return;
     }
 
+    const maxSize = 1024 * 1024; // 1 MB
+
+    const allowedTypes = [
+      'image/jpeg',
+      'image/jpg',
+      'image/png'
+    ];
+
+    if (!allowedTypes.includes(file.type)) {
+      this.photoError = 'Only JPG, JPEG and PNG images are allowed.';
+      event.target.value = '';
+      this.studentForm.patchValue({ photo: null });
+      return;
+    }
+
+    if (file.size > maxSize) {
+      this.photoError = 'Passport size photo must not exceed 1 MB.';
+      event.target.value = '';
+      this.studentForm.patchValue({ photo: null });
+      return;
+    }
+
+    this.photoError = '';
+
+    this.studentForm.patchValue({
+      photo: file
+    });
+
+    this.studentForm.get('photo')?.updateValueAndValidity();
   }
 
+  documentError: string = '';
 
   onDocumentSelected(event: any) {
 
     const file = event.target.files[0];
 
-    if (file) {
-
-      this.studentForm.patchValue({
-        document: file
-      });
-
-      this.studentForm.get('document')?.updateValueAndValidity();
-
+    if (!file) {
+      return;
     }
 
+    const maxSize = 1024 * 1024; // 1 MB
+
+    const allowedTypes = [
+      'image/jpeg',
+      'image/jpg',
+      'image/png',
+      'application/pdf'
+    ];
+
+    if (!allowedTypes.includes(file.type)) {
+      this.documentError =
+        'Only JPG, JPEG, PNG and PDF files are allowed.';
+      event.target.value = '';
+      this.studentForm.patchValue({ document: null });
+      return;
+    }
+
+    if (file.size > maxSize) {
+      this.documentError =
+        'Aadhaar/PAN file size must not exceed 1 MB.';
+      event.target.value = '';
+      this.studentForm.patchValue({ document: null });
+      return;
+    }
+
+    this.documentError = '';
+
+    this.studentForm.patchValue({
+      document: file
+    });
+
+    this.studentForm.get('document')?.updateValueAndValidity();
   }
 
 }
