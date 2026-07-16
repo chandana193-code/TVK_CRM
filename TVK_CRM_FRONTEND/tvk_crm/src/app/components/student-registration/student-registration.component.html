@@ -1,0 +1,182 @@
+<div class="container">
+
+    <h2>Student Registration</h2>
+
+    <form [formGroup]="studentForm" (ngSubmit)="saveStudent()">
+
+        <input type="text" placeholder="First Name" formControlName="firstName">
+
+        <div class="error" *ngIf="f.firstName.touched && f.firstName.invalid">
+
+            <span *ngIf="f.firstName.errors?.['required']">
+                First Name is required.
+            </span>
+
+        </div>
+
+        <input type="text" placeholder="Last Name" formControlName="lastName">
+
+        <div class="error" *ngIf="f.lastName.touched && f.lastName.invalid">
+
+            <span *ngIf="f.lastName.errors?.['required']">
+                Last Name is required.
+            </span>
+
+        </div>
+
+        <input type="text" placeholder="Mobile Number" formControlName="mobile">
+
+        <div class="error" *ngIf="f.mobile.touched && f.mobile.invalid">
+
+            <span *ngIf="f.mobile.errors?.['required']">
+                Mobile Number is required.
+            </span>
+
+            <span *ngIf="f.mobile.errors?.['pattern']">
+                Enter a valid 10-digit Indian mobile number.
+            </span>
+
+        </div>
+
+        <input type="email" placeholder="Email ID" formControlName="email">
+
+        <div class="error" *ngIf="f.email.touched && f.email.invalid">
+
+            <span *ngIf="f.email.errors?.['required']">
+                Email is required.
+            </span>
+
+            <span *ngIf="f.email.errors?.['email']">
+                Enter a valid Email ID.
+            </span>
+
+        </div>
+
+        <input type="text" placeholder="College Name" formControlName="college">
+
+        <div class="error" *ngIf="f.college.touched && f.college.invalid">
+
+            <span *ngIf="f.college.errors?.['required']">
+                College Name is required.
+            </span>
+
+        </div>
+
+        <select formControlName="degree" (change)="onDegreeChange($event)">
+
+            <option value="">Select Degree</option>
+
+            <option *ngFor="let d of degrees" [value]="d">
+                {{d}}
+            </option>
+
+        </select>
+
+        <select formControlName="group">
+
+            <option value="">Select Group</option>
+
+            <option *ngFor="let g of groups" [value]="g">
+                {{g}}
+            </option>
+
+        </select>
+
+        <select formControlName="passout">
+            <option value="">-- Select Passout Year --</option>
+
+            <option *ngFor="let year of passoutYears" [value]="year">
+                {{ year }}
+            </option>
+        </select>
+
+        <div class="error" *ngIf="f.passout.touched && f.passout.invalid">
+            <span *ngIf="f.passout.errors?.['required']">
+                Please select your Passout Year.
+            </span>
+        </div>
+
+        <input type="text" placeholder="Aadhaar Number" formControlName="aadhaar">
+
+        <div class="error" *ngIf="f.aadhaar.touched && f.aadhaar.invalid">
+
+            <span *ngIf="f.aadhaar.errors?.['required']">
+                Aadhaar Number is required.
+            </span>
+
+            <span *ngIf="f.aadhaar.errors?.['pattern']">
+                Aadhaar must contain exactly 12 digits.
+            </span>
+
+        </div>
+
+        <!-- Student College Registration ID -->
+        <input type="text" placeholder="College Registration ID" formControlName="collegeRegId">
+
+        <div class="error" *ngIf="f.collegeRegId.touched && f.collegeRegId.invalid">
+
+            <span *ngIf="f.collegeRegId.errors?.['required']">
+                College Registration ID is required.
+            </span>
+
+        </div>
+
+
+        <!-- Internship Course -->
+        <select formControlName="course">
+
+            <option value="">Select Internship Course</option>
+
+            <option value="Angular">Angular</option>
+            <option value="React">React</option>
+            <option value="Java Full Stack">Java Full Stack</option>
+            <option value=".NET Full Stack">.NET Full Stack</option>
+            <option value="Python Full Stack">Python Full Stack</option>
+            <option value="MERN Stack">MERN Stack</option>
+            <option value="Data Science">Data Science</option>
+            <option value="Artificial Intelligence">Artificial Intelligence</option>
+
+        </select>
+
+        <div class="error" *ngIf="f.course.touched && f.course.invalid">
+
+            <span *ngIf="f.course.errors?.['required']">
+                Please select an internship course.
+            </span>
+
+        </div>
+
+
+        <!-- Passport Photo -->
+        <label class="file-label">
+            Passport Size Photo (JPG, JPEG, PNG | Max 1 MB)
+        </label>
+
+        <input type="file" accept=".jpg,.jpeg,.png" (change)="onPhotoSelected($event)">
+
+        <div class="error" *ngIf="photoError">
+            {{ photoError }}
+        </div>
+
+
+        <!-- Aadhaar / PAN -->
+        <label class="file-label">
+            Upload Aadhaar / PAN Card (JPG, PNG, PDF | Max 1 MB)
+        </label>
+
+        <input type="file" accept=".jpg,.jpeg,.png,.pdf" (change)="onDocumentSelected($event)">
+
+        <div class="error" *ngIf="documentError">
+            {{ documentError }}
+        </div>
+        <br><br>
+
+        <button type="submit">
+            Register
+        </button>
+
+    </form>
+
+    <hr>
+
+</div>
