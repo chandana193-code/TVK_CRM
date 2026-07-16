@@ -1,123 +1,362 @@
-<div class="container">
+<div class="page">
 
-    <h2>Student Registration</h2>
+    <div class="register-container">
 
-    <form [formGroup]="studentForm" (ngSubmit)="saveStudent()">
+        <div class="form-header">
 
-        <input type="text" placeholder="First Name" formControlName="firstName">
+            <h1>Student Registration Portal</h1>
 
-        <div class="error" *ngIf="f.firstName.touched && f.firstName.invalid">
-
-            <span *ngIf="f.firstName.errors?.['required']">
-                First Name is required.
-            </span>
-
-        </div>
-
-        <input type="text" placeholder="Last Name" formControlName="lastName">
-
-        <div class="error" *ngIf="f.lastName.touched && f.lastName.invalid">
-
-            <span *ngIf="f.lastName.errors?.['required']">
-                Last Name is required.
-            </span>
+            <p>
+                Create your internship profile and begin your career journey
+                with TVK Technologies.
+            </p>
 
         </div>
 
-        <input type="text" placeholder="Mobile Number" formControlName="mobile">
+        <form
+            [formGroup]="studentForm"
+            (ngSubmit)="saveStudent()">
 
-        <div class="error" *ngIf="f.mobile.touched && f.mobile.invalid">
+            <div class="row">
 
-            <span *ngIf="f.mobile.errors?.['required']">
-                Mobile Number is required.
-            </span>
+                <div class="field">
 
-            <span *ngIf="f.mobile.errors?.['pattern']">
-                Enter a valid 10-digit Indian mobile number.
-            </span>
+                    <label>First Name</label>
 
-        </div>
+                    <input
+                        type="text"
+                        placeholder="Enter First Name"
+                        formControlName="firstName">
 
-        <input type="email" placeholder="Email ID" formControlName="email">
+                    <div
+                        class="error"
+                        *ngIf="f.firstName.touched && f.firstName.invalid">
 
-        <div class="error" *ngIf="f.email.touched && f.email.invalid">
+                        <span *ngIf="f.firstName.errors?.['required']">
+                            First Name is required
+                        </span>
 
-            <span *ngIf="f.email.errors?.['required']">
-                Email is required.
-            </span>
+                    </div>
 
-            <span *ngIf="f.email.errors?.['email']">
-                Enter a valid Email ID.
-            </span>
+                </div>
 
-        </div>
+                <div class="field">
 
-        <input type="text" placeholder="College Name" formControlName="college">
+    <label>
+         Middle Name (Optional)
+    </label>
 
-        <div class="error" *ngIf="f.college.touched && f.college.invalid">
+    <input
+        type="text"
+        placeholder="Enter Middle Name"
+        formControlName="middleName">
 
-            <span *ngIf="f.college.errors?.['required']">
-                College Name is required.
-            </span>
+</div>
 
-        </div>
+                <div class="field">
 
-        <select formControlName="degree" (change)="onDegreeChange($event)">
+                    <label> Last Name</label>
 
-            <option value="">Select Degree</option>
+                    <input
+                        type="text"
+                        placeholder="Enter Last Name"
+                        formControlName="lastName">
 
-            <option *ngFor="let d of degrees" [value]="d">
-                {{d}}
-            </option>
+                    <div
+                        class="error"
+                        *ngIf="f.lastName.touched && f.lastName.invalid">
 
-        </select>
+                        <span *ngIf="f.lastName.errors?.['required']">
+                            Last Name is required
+                        </span>
 
-        <select formControlName="group">
+                    </div>
 
-            <option value="">Select Group</option>
+                </div>
 
-            <option *ngFor="let g of groups" [value]="g">
-                {{g}}
-            </option>
+            </div>
 
-        </select>
+            <div class="row">
 
-        <select formControlName="passout">
-            <option value="">-- Select Passout Year --</option>
+                 <div class="field">
 
-            <option *ngFor="let year of passoutYears" [value]="year">
-                {{ year }}
-            </option>
-        </select>
+                    <label> Mobile Number</label>
 
-        <div class="error" *ngIf="f.passout.touched && f.passout.invalid">
-            <span *ngIf="f.passout.errors?.['required']">
-                Please select your Passout Year.
-            </span>
-        </div>
-        
-        <input type="text" placeholder="Aadhaar Number" formControlName="aadhaar">
+                    <input
+                        type="text"
+                        placeholder="+91 XXXXX XXXXX"
+                        formControlName="mobile">
 
-        <div class="error" *ngIf="f.aadhaar.touched && f.aadhaar.invalid">
+                    <div
+                        class="error"
+                        *ngIf="f.mobile.touched && f.mobile.invalid">
 
-            <span *ngIf="f.aadhaar.errors?.['required']">
-                Aadhaar Number is required.
-            </span>
+                        <span *ngIf="f.mobile.errors?.['required']">
+                            Mobile Number is required
+                        </span>
 
-            <span *ngIf="f.aadhaar.errors?.['pattern']">
-                Aadhaar must contain exactly 12 digits.
-            </span>
+                        <span *ngIf="f.mobile.errors?.['pattern']">
+                            Enter valid mobile number
+                        </span>
 
-        </div>
+                    </div>
 
-        <br><br>
+                </div>
 
-        <button type="submit">
-            Register
-        </button>
+                <div class="field">
 
-    </form>
+                    <label> Email Address</label>
 
-    <hr>
+                    <input
+                        type="email"
+                        placeholder="example@gmail.com"
+                        formControlName="email">
+
+                    <div
+                        class="error"
+                        *ngIf="f.email.touched && f.email.invalid">
+
+                        <span *ngIf="f.email.errors?.['required']">
+                            Email is required
+                        </span>
+
+                        <span *ngIf="f.email.errors?.['email']">
+                            Invalid Email Address
+                        </span>
+
+                    </div>
+
+                </div>
+
+                
+
+                <div class="field">
+
+                    <label> College Name</label>
+
+                    <input
+                        type="text"
+                        placeholder="Enter College Name"
+                        formControlName="college">
+
+                    <div
+                        class="error"
+                        *ngIf="f.college.touched && f.college.invalid">
+
+                        <span *ngIf="f.college.errors?.['required']">
+                            College Name is required
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                 <div class="field">
+
+                    <label> College Registration ID</label>
+
+                    <input
+                        type="text"
+                        placeholder="Registration Number"
+                        formControlName="collegeRegId">
+
+                    <div
+                        class="error"
+                        *ngIf="f.collegeRegId.touched && f.collegeRegId.invalid">
+
+                        <span *ngIf="f.collegeRegId.errors?.['required']">
+                            Registration ID is required
+                        </span>
+
+                    </div>
+
+                </div> 
+
+                <div class="field">
+
+                    <label> Degree</label>
+
+                    <select
+                        formControlName="degree"
+                        (change)="onDegreeChange($event)">
+
+                        <option value="">Select Degree</option>
+
+                        <option
+                            *ngFor="let d of degrees"
+                            [value]="d">
+
+                            {{ d }}
+
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <div class="field">
+
+                    <label>Group</label>
+
+                    <select formControlName="group">
+
+                        <option value="">Select Group</option>
+
+                        <option
+                            *ngFor="let g of groups"
+                            [value]="g">
+
+                            {{ g }}
+
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                 <div class="field">
+
+                    <label>Passout Year</label>
+
+                    <select formControlName="passout">
+
+                        <option value="">Select Year</option>
+
+                        <option
+                            *ngFor="let year of passoutYears"
+                            [value]="year">
+
+                            {{ year }}
+
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <div class="field">
+
+                    <label> Aadhaar Number</label>
+
+                    <input
+                        type="text"
+                        placeholder="Enter Aadhaar Number"
+                        formControlName="aadhaar">
+
+                    <div
+                        class="error"
+                        *ngIf="f.aadhaar.touched && f.aadhaar.invalid">
+
+                        <span *ngIf="f.aadhaar.errors?.['required']">
+                            Aadhaar Number is required
+                        </span>
+
+                        <span *ngIf="f.aadhaar.errors?.['pattern']">
+                            Aadhaar must contain 12 digits
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="field">
+
+                    <label> Internship Course</label>
+
+                    <select formControlName="course">
+
+                        <option value="">Select Course</option>
+
+                        <option value="Angular">Angular</option>
+                        <option value="React">React</option>
+                        <option value="Java Full Stack">Java Full Stack</option>
+                        <option value=".NET Full Stack">.NET Full Stack</option>
+                        <option value="Python Full Stack">Python Full Stack</option>
+                        <option value="MERN Stack">MERN Stack</option>
+                        <option value="Data Science">Data Science</option>
+                        <option value="Artificial Intelligence">Artificial Intelligence</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                 <div class="field">
+
+                    <label> Passport Size Photo</label>
+
+                    <input
+                        type="file"
+                        accept=".jpg,.jpeg,.png"
+                        (change)="onPhotoSelected($event)">
+
+                    <div
+                        class="error"
+                        *ngIf="photoError">
+
+                        {{ photoError }}
+
+                    </div>
+
+                </div>
+
+                <div class="field full">
+
+                    <label> Aadhaar / PAN Card</label>
+
+                    <input
+                        type="file"
+                        accept=".jpg,.jpeg,.png,.pdf"
+                        (change)="onDocumentSelected($event)">
+
+                    <div
+                        class="error"
+                        *ngIf="documentError">
+
+                        {{ documentError }}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="button-group">
+
+                <button
+                    type="button"
+                    class="back-btn"
+                    routerLink="/">
+
+                    ← Back to Home
+
+                </button>
+
+                <button
+                    type="submit"
+                    class="register-btn"
+                     routerLink="/payment"
+                    >
+
+                    Register Now →
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
 
 </div>

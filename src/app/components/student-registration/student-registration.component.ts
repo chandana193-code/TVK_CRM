@@ -1,4 +1,4 @@
-import { Component , OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { FormBuilder, Validators } from '@angular/forms';
 
@@ -9,9 +9,9 @@ import { StudentService } from '../../services/student.service';
   templateUrl: './student-registration.component.html',
   styleUrls: ['./student-registration.component.css']
 })
-export class StudentRegistrationComponent implements OnInit  {
+export class StudentRegistrationComponent implements OnInit {
 
-  
+
   passoutYears: number[] = [];
   constructor(
     private fb: FormBuilder,
@@ -121,6 +121,8 @@ export class StudentRegistrationComponent implements OnInit  {
 
     firstName: ['', [Validators.required]],
 
+    middleName: [''],
+
     lastName: ['', [Validators.required]],
 
     mobile: ['', [
@@ -148,7 +150,15 @@ export class StudentRegistrationComponent implements OnInit  {
     aadhaar: ['', [
       Validators.required,
       Validators.pattern('^[0-9]{12}$')
-    ]]
+    ]],
+
+    collegeRegId: ['', Validators.required],
+
+    course: ['', Validators.required],
+
+    photo: [null, Validators.required],
+
+    document: [null, Validators.required]
 
   });
 
@@ -195,6 +205,91 @@ export class StudentRegistrationComponent implements OnInit  {
 
     })
 
+  }
+
+  photoError: string = '';
+
+  onPhotoSelected(event: any) {
+
+    const file = event.target.files[0];
+
+    if (!file) {
+      return;
+    }
+
+    const maxSize = 1024 * 1024; 
+
+    const allowedTypes = [
+      'image/jpeg',
+      'image/jpg',
+      'image/png'
+    ];
+
+    if (!allowedTypes.includes(file.type)) {
+      this.photoError = 'Only JPG, JPEG and PNG images are allowed.';
+      event.target.value = '';
+      this.studentForm.patchValue({ photo: null });
+      return;
+    }
+
+    if (file.size > maxSize) {
+      this.photoError = 'Passport size photo must not exceed 1 MB.';
+      event.target.value = '';
+      this.studentForm.patchValue({ photo: null });
+      return;
+    }
+
+    this.photoError = '';
+
+    this.studentForm.patchValue({
+      photo: file
+    });
+
+    this.studentForm.get('photo')?.updateValueAndValidity();
+  }
+
+  documentError: string = '';
+
+  onDocumentSelected(event: any) {
+
+    const file = event.target.files[0];
+
+    if (!file) {
+      return;
+    }
+
+    const maxSize = 1024 * 1024; 
+
+    const allowedTypes = [
+      'image/jpeg',
+      'image/jpg',
+      'image/png',
+      'application/pdf'
+    ];
+
+    if (!allowedTypes.includes(file.type)) {
+      this.documentError =
+        'Only JPG, JPEG, PNG and PDF files are allowed.';
+      event.target.value = '';
+      this.studentForm.patchValue({ document: null });
+      return;
+    }
+
+    if (file.size > maxSize) {
+      this.documentError =
+        'Aadhaar/PAN file size must not exceed 1 MB.';
+      event.target.value = '';
+      this.studentForm.patchValue({ document: null });
+      return;
+    }
+
+    this.documentError = '';
+
+    this.studentForm.patchValue({
+      document: file
+    });
+
+    this.studentForm.get('document')?.updateValueAndValidity();
   }
 
 }

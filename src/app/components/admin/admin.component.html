@@ -1,18 +1,102 @@
-<div class="coming-soon">
+<div class="dashboard-container">
 
-    <div class="card">
+    <div class="header">
+        <h2>TVK CRM ADMIN PORTAL</h2>
+        <p>Manage registrations, payments and trainers.</p>
+    </div>
 
-        <h1>🛠️</h1>
+    <div class="menu-section">
 
-        <h2>Admin Portal</h2>
+        <div class="menu-card">
+            <h3>👨‍🎓 Students</h3>
 
-        <h3>Coming Soon...</h3>
+            <button>View Students</button>
+            <button>Search Student</button>
+            <button>Registered Students</button>
 
-        <p>
-            The Admin dashboard is currently under development.
-        </p>
+        </div>
 
-        <button routerLink="/">← Back to Registration</button>
+        <div class="menu-card">
+            <h3>💰 Payments</h3>
+
+            <button>Verify Payment</button>
+            <button>Pending Payments</button>
+            <button>Payment History</button>
+
+        </div>
+
+        <div class="menu-card">
+            <h3>👨‍🏫 Trainers</h3>
+
+            <button>Assign Trainer</button>
+            <button>Available Trainers</button>
+            <button>Trainer Schedule</button>
+
+        </div>
+
+    </div>
+
+    <div class="table-section">
+
+        <div class="table-header">
+
+            <h2>Registered Students</h2>
+
+            <input
+                type="text"
+                placeholder="Search Student">
+
+        </div>
+
+        <table>
+
+            <thead>
+
+            <tr>
+
+                <th>Name</th>
+
+                <th>Mobile</th>
+
+                <th>College</th>
+
+                <th>Payment</th>
+
+                <th>Trainer</th>
+
+                <th>Action</th>
+
+            </tr>
+
+            </thead>
+
+            <tbody>
+
+            <tr>
+
+                <td>Chandana</td>
+
+                <td>9876543210</td>
+
+                <td>SV University</td>
+
+                <td><span class="pending">Pending</span></td>
+
+                <td>--</td>
+
+                <td>
+
+                    <button class="verify">Verify</button>
+
+                    <button class="view">View</button>
+
+                </td>
+
+            </tr>
+
+            </tbody>
+
+        </table>
 
     </div>
 

@@ -7,7 +7,9 @@
   align-items: center;
   justify-content: space-between;
   padding: 18px 40px;
-  background: linear-gradient(180deg, #102544, #0a1830);
+  /* background: linear-gradient(180deg, #102544, #0a1830); */
+
+  background-color: #708D81;
 
   /* Carved / engraved edge: dark groove on top, faint highlight below */
   border-top: 1px solid #050c18;
