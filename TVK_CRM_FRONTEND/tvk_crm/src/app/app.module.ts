@@ -9,6 +9,10 @@ import { StudentRegistrationComponent } from './components/student-registration/
 import { TrainersComponent } from './components/trainers/trainers.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { PaymentComponent } from './components/payment/payment.component';
+import { WelcomePageComponent } from './components/welcome-page/welcome-page.component';
+import { RoleBasedLoginComponent } from './role-based-login/role-based-login.component';
+
 
 @NgModule({
   declarations: [
@@ -16,7 +20,10 @@ import { HttpClientModule } from '@angular/common/http';
     AdminComponent,
     NavbarComponent,
     StudentRegistrationComponent,
-    TrainersComponent
+    TrainersComponent,
+    PaymentComponent,
+    WelcomePageComponent,
+    RoleBasedLoginComponent
   ],
   imports: [
     BrowserModule,

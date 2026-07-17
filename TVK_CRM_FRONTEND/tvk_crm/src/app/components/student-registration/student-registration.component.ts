@@ -121,6 +121,8 @@ export class StudentRegistrationComponent implements OnInit {
 
     firstName: ['', [Validators.required]],
 
+    middleName: [''],
+
     lastName: ['', [Validators.required]],
 
     mobile: ['', [
@@ -215,7 +217,7 @@ export class StudentRegistrationComponent implements OnInit {
       return;
     }
 
-    const maxSize = 1024 * 1024; // 1 MB
+    const maxSize = 1024 * 1024; 
 
     const allowedTypes = [
       'image/jpeg',
@@ -256,7 +258,7 @@ export class StudentRegistrationComponent implements OnInit {
       return;
     }
 
-    const maxSize = 1024 * 1024; // 1 MB
+    const maxSize = 1024 * 1024; 
 
     const allowedTypes = [
       'image/jpeg',

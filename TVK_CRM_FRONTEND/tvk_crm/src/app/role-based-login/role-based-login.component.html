@@ -1,0 +1,89 @@
+<div class="login-page">
+
+    <div class="login-card">
+
+        <div class="left-side">
+
+            <h1>TVK Technologies</h1>
+
+            <h3>Internship Management Portal</h3>
+
+            <p>
+                Welcome Back!
+                Login to continue managing students,
+                internships and placements.
+            </p>
+
+            <div class="demo-box">
+
+                <h4>Demo Credentials</h4>
+
+                <p><b>Admin</b></p>
+
+                <p>Email :
+                    admin@tvktechnologies.com
+                </p>
+
+                <p>Password :
+                    Admin@123
+                </p>
+
+                <br>
+
+                <p><b>Team Lead</b></p>
+
+                <p>Email :
+                    lead@tvktechnologies.com
+                </p>
+
+                <p>Password :
+                    Lead@123
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="right-side">
+
+            <h2>Login</h2>
+
+            <form
+                [formGroup]="loginForm"
+                (ngSubmit)="login()">
+
+                <div class="field">
+
+                    <label>Email Address</label>
+
+                    <input
+                        type="email"
+                        placeholder="Enter Email"
+                        formControlName="email">
+
+                </div>
+
+                <div class="field">
+
+                    <label>Password</label>
+
+                    <input
+                        type="password"
+                        placeholder="Enter Password"
+                        formControlName="password">
+
+                </div>
+
+                <button type="submit">
+
+                    Login
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
